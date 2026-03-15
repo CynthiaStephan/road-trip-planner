@@ -7,7 +7,7 @@ services:
       - "5173:5173"
     volumes:
       - ./client:/app
-      - /app/node_modules
+      - node_modules:/app/node_modules
     environment:
       NODE_ENV: development
     command: npm run dev
@@ -41,3 +41,4 @@ services:
 
 volumes:
   pgdata:
+  node_modules:
