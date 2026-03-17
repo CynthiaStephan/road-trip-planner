@@ -2,9 +2,8 @@
 </script>
 
 <template>
-   <RouterView />
+  <p>PROFIL</p>
 </template>
 
 <style scoped>
-
 </style>
