@@ -57,6 +57,10 @@
 
         }
     },
+    "mounts": [
+        "source=${localEnv:USERPROFILE}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+        "source=${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+    ],
     "postCreateCommand": "cd /workspace/client && npm install && cd /workspace/server && pip install -r requirements.txt",
     "forwardPorts": [5173, 8000, 5432, 5678],
     "portsAttributes": {
