@@ -18,15 +18,20 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+      - "5678:5678"
     volumes:
       - ./server:/app
     environment:
       PYTHONUNBUFFERED: 1
       DATABASE_URL: postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:${DATABASE_PORT}/${DATABASE_NAME}
       ENVIRONMENT: ${ENVIRONMENT}
+      WATCHFILES_FORCE_POLLING: "true"
+      PYDEVD_DISABLE_FILE_VALIDATION: "1"
     depends_on:
       - db
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: python -m debugpy --listen 0.0.0.0:5678 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # command: python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   db:
     image: postgres:15

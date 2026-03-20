@@ -13,6 +13,7 @@ colorama==0.4.6
 cors==1.0.1
 coverage==7.13.4
 cryptography==46.0.5
+debugpy==1.8.20
 dnspython==2.8.0
 ecdsa==0.19.1
 email-validator==2.3.0
