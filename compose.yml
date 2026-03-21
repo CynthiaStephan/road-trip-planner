@@ -1,4 +1,16 @@
 services:
+  dev:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+    volumes:
+      - .:/workspace:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: sleep infinity
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    depends_on:
+      - client
+      - server
+      - db
   client:
     build:
       context: ./client
@@ -10,7 +22,6 @@ services:
       - /app/node_modules
     environment:
       NODE_ENV: development
-
 
   server:
     build:
@@ -30,8 +41,6 @@ services:
     depends_on:
       - db
     command: python -m debugpy --listen 0.0.0.0:5678 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    # command: python -m debugpy --listen 0.0.0.0:5678 --wait-for-client -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   db:
     image: postgres:15
@@ -43,6 +52,11 @@ services:
       - "${DATABASE_PORT}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   pgdata:
