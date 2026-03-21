@@ -3,7 +3,9 @@
     "dockerComposeFile": "../compose.yml",
     "service": "dev",
     "workspaceFolder": "/workspace",
-    "remoteUser": "root",
+
+    "remoteUser": "vscode",
+
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "version": "24"
@@ -12,6 +14,7 @@
             "version": "3.13"
         }
     },
+
     "customizations": {
         "vscode": {
             "extensions": [
@@ -31,8 +34,9 @@
 
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.defaultInterpreterPath": "/workspace/server/.venv/bin/python",
                 "python.terminal.activateEnvironment": true,
+
                 "python.linting.enabled": true,
                 "python.linting.flake8Enabled": true,
                 "python.linting.flake8Args": [
@@ -58,11 +62,13 @@
         }
     },
     "mounts": [
-        "source=${localEnv:USERPROFILE}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
-        "source=${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+        "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
     ],
-    "postCreateCommand": "chmod 700 /root/.ssh && chmod 600 /root/.ssh/id_rsa && chmod 644 /root/.ssh/id_rsa.pub /root/.ssh/known_hosts* && cd /workspace/client && npm install && cd /workspace/server && pip install -r requirements.txt",
+    "postCreateCommand": "bash .devcontainer/post-create.sh",
+
     "forwardPorts": [5173, 8000, 5432, 5678],
+    
     "portsAttributes": {
         "5173": {
             "label": "Vite Dev Server",

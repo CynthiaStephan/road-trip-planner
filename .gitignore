@@ -1,96 +1,89 @@
-# === Python / Backend ===
+.env
+.env.*
+!.env.example
+.envrc
+
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-*.env
-.env.local
-.env.*.local
+
 .venv/
 venv/
+
+*.egg-info/
+.eggs/
+build/
+dist/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
 *.log
 *.db
+*.sqlite
 *.sqlite3
 
-# Alembic / migrations
 alembic/versions/*.pyc
 !alembic/versions/*.py
 
-# Coverage / Tests
-.coverage
-.coverage.*
-.pytest_cache/
-htmlcov/
-.tox/
-.mypy_cache/
-.ruff_cache/
-
-# === Node / Frontend ===
 node_modules/
 dist/
-public/dist/
 build/
+public/dist/
+
+node_modules/.vite
+
 *.tsbuildinfo
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Environnement variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+coverage/
 
-# === IDEs ===
-.vscode/
+.vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
 .idea/
 *.swp
 *.swo
 *~
-.DS_Store
-
-# === System / Temp ===
-.DS_Store
-Thumbs.db
-desktop.ini
-*.log
-*.tmp
-*.temp
-*.cache
-*.pid
-*.seed
-*.pid.lock
-
-# === Docker ===
-docker-compose.override.yml
-.dockerignore
-Dockerfile.dev
-**/tmp/
-**/docker/data/
-**/docker/logs/
-
-# === Project specific ===
-# Secrets
-*.key
-*.pem
-*.crt
-*.p12
-secrets/
-
-# Uploads / Media
-uploads/
-media/
-staticfiles/
-
-# === Editor directories and files ===
 .project
 .classpath
 .settings/
 *.sublime-*
 *.komodoproject
 *.bak
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+docker-compose.override.yml
+Dockerfile.dev
+**/tmp/
+**/docker/data/
+**/docker/logs/
+
+
+.devcontainer/.env
+.devcontainer/*.log
+
+
+*.key
+*.pem
+*.crt
+*.p12
+secrets/
+
+uploads/
+media/
+staticfiles/
