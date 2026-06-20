@@ -11,4 +11,3 @@ def read_root():
         "message": "test",
         "environment": settings.environment
     }
-    
