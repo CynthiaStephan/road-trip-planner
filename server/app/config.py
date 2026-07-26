@@ -2,8 +2,21 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    environment: str = "development"
 
-    model_config = SettingsConfigDict(env_file=".env")
+    database_user: str
+    database_password: str
+    database_name: str
+    database_host: str
+    database_port: int
+    database_url: str
+
+    map_key: str
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore"
+    )
 
 
 settings = Settings()
