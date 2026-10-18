@@ -11,7 +11,9 @@ class Settings(BaseSettings):
     database_port: int
     database_url: str
 
-    map_key: str
+    map_key: str = ""
+
+    cors_origins: list[str] = ["http://localhost:5173"]
 
     model_config = SettingsConfigDict(
         env_file=".env",
