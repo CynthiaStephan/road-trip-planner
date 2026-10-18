@@ -18,7 +18,7 @@ Work-in-progress web app to plan and visualize road trips.
 
 ### Backend
 ```bash
-cd backend
+cd server
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ````
@@ -26,7 +26,7 @@ uvicorn app.main:app --reload
 ### Frontend
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```

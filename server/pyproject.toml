@@ -37,7 +37,7 @@ dev = [
 
 dev = "uvicorn app.main:app --reload"
 test = "pytest"
-test-cov = "pytest --cov=app"
-db-upgrade = "alembic upgrade head"
-db-revision = "alembic revision --autogenerate"
-db-downgrade = "alembic downgrade -1"
+test_cov = "pytest --cov=app"
+db_upgrade = "alembic upgrade head"
+db_revision = "alembic revision --autogenerate"
+db_downgrade = "alembic downgrade -1"

@@ -87,3 +87,8 @@ secrets/
 uploads/
 media/
 staticfiles/
+
+.claude/settings.local.json
+.env
+.env.local
+graphify-out/cache/
