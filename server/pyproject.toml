@@ -32,7 +32,8 @@ dev = [
     "coverage (>=7.15.2,<8.0.0)",
     "poethepoet (>=0.48.0,<0.49.0)",
     "httpx (>=0.28.1,<0.29.0)",
-    "debugpy (>=1.8.22,<2.0.0)"
+    "debugpy (>=1.8.22,<2.0.0)",
+    "ruff (>=0.17.1,<0.18.0)"
 ]
 
 [tool.poetry]
@@ -42,10 +43,24 @@ package-mode = false
 testpaths = ["tests"]
 pythonpath = ["."]
 
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+
+[tool.ruff.lint]
+# E/F: erreurs pycodestyle et pyflakes, I: tri des imports, B: bugs probables,
+# UP: syntaxe Python moderne, ANN: annotations de type obligatoires
+select = ["E", "F", "I", "B", "UP", "ANN"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN"]
+
 [tool.poe.tasks]
 
 dev = "uvicorn app.main:app --reload"
 debug = "python -m debugpy --listen 5678 -m uvicorn app.main:app --reload"
+lint = "ruff check ."
+format = "ruff format ."
 test = "pytest"
 test_cov = "pytest --cov=app"
 db_upgrade = "alembic upgrade head"

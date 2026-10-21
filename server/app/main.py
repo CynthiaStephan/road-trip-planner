@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.config import settings
 
+from app.config import settings
 
 app = FastAPI()
 
@@ -14,8 +14,5 @@ app.add_middleware(
 
 
 @app.get("/")
-def read_root():
-    return {
-        "message": "test",
-        "environment": settings.environment
-    }
+def read_root() -> dict[str, str]:
+    return {"message": "test", "environment": settings.database_name}
