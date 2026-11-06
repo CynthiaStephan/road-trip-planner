@@ -52,10 +52,3 @@ client/        front-end React + TypeScript + Vite
 server/        back-end FastAPI + PostgreSQL (v1.1)
 compose.yml    base de données PostgreSQL pour le développement
 ```
-
-
-## Autrice
-
-Conçu et développé par **Cynthia Stephan**, développeuse full stack et product designer.
-
-[Portfolio](https://cynthiastephan.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/cynthia-stephan/) · [GitHub](https://github.com/CynthiaStephan)
