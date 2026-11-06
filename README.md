@@ -1,29 +1,35 @@
-# Road Trip Planner
+# Waygo
 
-Work-in-progress web app to plan and visualize road trips.
+**Planifier un road trip en voiture comme on le ferait sur une carte papier, avec la liberté du numérique.**
 
-## Stack
+Waygo réunit une carte interactive et un carnet d'itinéraire : on ajoute ses étapes, et l'application calcule le planning du voyage (heures d'arrivée, de départ, jours de route).
 
-- Frontend: Vue 3 + TypeScript  
-- Backend: FastAPI (Python)
+> 🚧 **Projet en cours**
 
-## Features
+## Le concept
 
-- Manage trip destinations
-- Map visualization
-- Route data (distance, duration)
+*Analog spirit, digital freedom.* L'interface s'inspire d'un carnet de voyage posé sur une carte routière.
+
+<p align="center">
+  <img src="./docs/desktop_maquette.jpg" alt="Écran carte sur ordinateur, avec le carnet d'itinéraire ouvert à droite" width="65%">
+  &nbsp;
+  <img src="./docs/mobile_maquette.jpg" alt="Écran carte sur mobile, avec la liste des étapes en bas" width="19%">
+</p>
 
 
-## Run locally
+## Stack technique
 
-### Backend
-```bash
-cd server
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-````
+| Côté | Technologies |
+|---|---|
+| Front-end | React, TypeScript, Vite |
+| Back-end (v1.1) | Python, FastAPI, PostgreSQL |
+| Données cartographiques | OpenStreetMap |
+| Outillage | Docker Compose, Prettier |
+| Design | Figma |
 
-### Frontend
+
+
+### Front-end
 
 ```bash
 cd client
@@ -31,7 +37,25 @@ npm install
 npm run dev
 ```
 
-## Status
+### Back-end
 
-🚧 In development
+```bash
+cd server
+poetry install
+poetry run poe debug
+```
 
+## Organisation du dépôt
+
+```
+client/        front-end React + TypeScript + Vite
+server/        back-end FastAPI + PostgreSQL (v1.1)
+compose.yml    base de données PostgreSQL pour le développement
+```
+
+
+## Autrice
+
+Conçu et développé par **Cynthia Stephan**, développeuse full stack et product designer.
+
+[Portfolio](https://cynthiastephan.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/cynthia-stephan/) · [GitHub](https://github.com/CynthiaStephan)

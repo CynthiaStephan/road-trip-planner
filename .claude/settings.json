@@ -24,5 +24,8 @@
       "Read(./**/.env.production)",
       "Read(./client/src/data/*.json)"
     ]
+  },
+  "enabledPlugins": {
+    "code-review-anthropics@anthropic-plugin-directory": true
   }
 }
